@@ -14,7 +14,7 @@ int main(){
 	try{
 		consola->cmd();
 	}
-	catch(Error &e){
+	catch(CmdError &e){
 		cout<<e.what();
 	}
 	

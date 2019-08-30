@@ -54,6 +54,10 @@ class Log{
 			comd[num] = '\0';
 		}
 		
+		void printLog(){
+			cout<<"Num: "<<num_log<<", usuario: "<<user<<", cmd: \""<<comd<<"\""<<endl;
+		}
+		
 		~Log(){
 		}
 		

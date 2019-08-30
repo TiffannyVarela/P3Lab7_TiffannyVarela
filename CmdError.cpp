@@ -8,7 +8,7 @@ using namespace std;
 
 class CmdError : public runtime_error{
 	public:
-		exceptiones(char* msg):runtime_error(msg){
+		CmdError(char* msg):runtime_error(msg){
 			
 		}
 };
