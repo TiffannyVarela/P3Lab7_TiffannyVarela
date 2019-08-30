@@ -3,10 +3,10 @@
 #include <exception>
 using namespace std;
 
-#ifndef ERROR_CPP
-#define ERROR_CPP
+#ifndef CMDERROR_CPP
+#define CMDERROR_CPP
 
-class Error : public runtime_error{
+class CmdError : public runtime_error{
 	public:
 		exceptiones(char* msg):runtime_error(msg){
 			

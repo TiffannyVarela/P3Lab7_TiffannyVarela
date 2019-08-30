@@ -2,11 +2,18 @@
 #include <string>
 #include <string.h>
 #include <vector>
+#include <fstream>
 #include "Log.cpp"
 using namespace std;
 
-#ifndef _CPP
-#define _CPP
+#ifndef LOGGER_CPP
+#define LOGGER_CPP
+
+struct Log{
+	char user[100];
+	char comd [100];
+	int num_log;
+};
 
 class Logger{
 	protected:
@@ -56,8 +63,22 @@ class Logger{
 			vect_logs.push_back(l);
 		}
 		
+		int getN(){
+			vect_logs.size();
+		}
+		
 		void setVectLogs( vector <Log*> vect_logs){
 			this->vect_logs=vect_logs;
+		}
+		
+		void Escribir(){
+			string user, comd;
+			int n_log;
+			Log log;
+			for(int i=0< i<getN(); i++){
+				strcpy(log.user, vect_logs.at(i)->getUser().c_str());
+			}
+			
 		}
 		
 		~Logger(){

@@ -4,8 +4,8 @@
 #include "Logger.cpp"
 using namespace std;
 
-#ifndef _CPP
-#define _CPP
+#ifndef CONSOLA_CPP
+#define CONSOLA_CPP
 
 class Consola{
 	protected:

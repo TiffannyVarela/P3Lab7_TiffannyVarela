@@ -3,13 +3,13 @@
 #include <string.h>
 using namespace std;
 
-#ifndef _CPP
-#define _CPP
+#ifndef LOG_CPP
+#define LOG_CPP
 
 class Log{
 	protected:
-		string user;
-		string comd;
+		char user [100];
+		char comd [100];
 		int num_log;
 		
 	public:
@@ -18,11 +18,11 @@ class Log{
 		
 		Log(int num_log, string user, string comd){
 			this->num_log=num_log;
-			this->user=user;
-			this->comd=comd;
+			setUser(user);
+			setComd(comd);
 		}
 		
-		int getNum_log(){
+		int getNum_log()const{
 			return this->num_log;
 		}
 		
@@ -30,20 +30,28 @@ class Log{
 			this->num_log=num_log;
 		}
 		
-		string getUser(){
+		string getUser()const{
 			return this->user;
 		}
 		
-		void setUser(string user){
-			this->user.assign(user);
+		void setUser(string user1){
+			const char *puser = user1.data();
+			int num = user1.size();
+			num = num < 100 ? num:99;
+			strncpy(user, puser, num);
+			user[num] = '\0';
 		}
 		
-		string getComd(){
+		string getComd()const{
 			return this->comd;
 		}
 		
-		void setComd(string comd){
-			this->user.assign(user);
+		void setComd(string comd1){
+			const char *pcomd = comd1.data();
+			int num = comd1.size();
+			num = num < 100 ? num:99;
+			strncpy(comd, pcomd, num);
+			comd[num] = '\0';
 		}
 		
 		~Log(){

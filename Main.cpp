@@ -1,5 +1,5 @@
 #include <iostream>
-#include "Error.cpp"
+#include "CmdError.cpp"
 #include "Consola.cpp"
 
 using namespace std;
@@ -20,3 +20,4 @@ int main(){
 	
 	return 0;
 }
+
