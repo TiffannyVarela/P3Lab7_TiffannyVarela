@@ -13,7 +13,6 @@ int main(){
 	
 	try{
 		consola->cmd();
-		consola = NULL;
 		
 	}
 	catch(CmdError &e){
