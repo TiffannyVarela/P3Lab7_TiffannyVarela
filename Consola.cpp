@@ -27,15 +27,39 @@ class Consola{
 		int cmd(){
 			Log* log;
 			string comd;
-			cout<<"Comando: ";
-			cin>>comd;
-			int resp = system((comd.c_str()));
-			if(resp==1){
-				throw CmdError("ERROR COMANDO NO VALIDO");
-				logge->clear(logge->getLogs());
-			}
-			log = new Log(logge->getN(), user, comd);
+			
+			while (comd != "exit") {
+				int err = 0;
+				cout<<"Comando: ";
+				cin>>comd;
+				
+				if(comd == "cls"){
+					log = new Log(logge->getN(), user, comd);
+					logge->addLog(log);
+					logge->Escribir();
+					system("pause");
+				}
+				
+				if (comd == "listar") {
+					logge->Listar();
+				} else if (comd.size() > 3 && comd.substr(0, 3) == "cd ") {
+					err = _chdir(comd.substr(3, comd.size()).c_str());
+				} else {
+					err = system(comd.c_str());
+				}
+				log = new Log(logge->getN(), user, comd);
+				logge->addLog(log);
+				logge->Escribir();
+				if (err) {
+					logge->clear(logge->getLogs());
+					logge = NULL;
+					delete[] logge;
+					throw CmdError("ERROR COMANDO NO VALIDO");
+				}
+
 		}
+			
+	}
 };
 
 #endif
