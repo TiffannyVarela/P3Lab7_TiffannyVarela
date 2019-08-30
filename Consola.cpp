@@ -40,6 +40,13 @@ class Consola{
 					system("pause");
 				}
 				
+				if(comd == "exit"){
+					log = new Log(logge->getN(), user, comd);
+					logge->addLog(log);
+					logge->Escribir();
+					system("pause");
+				}
+				
 				if (comd == "listar") {
 					logge->Listar();
 				} else if (comd.size() > 3 && comd.substr(0, 3) == "cd ") {
@@ -52,8 +59,7 @@ class Consola{
 				logge->Escribir();
 				if (err) {
 					logge->clear(logge->getLogs());
-					logge = NULL;
-					delete[] logge;
+					delete logge;
 					throw CmdError("ERROR COMANDO NO VALIDO");
 				}
 

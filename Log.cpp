@@ -8,19 +8,19 @@ using namespace std;
 
 class Log{
 	protected:
-		char user [100];
-		char comd [100];
-		int num_log;
+		char user [100];//usuario
+		char comd [100];//comando
+		int num_log;//numero de log
 		
 	public:
 		Log(){
-		}
+		}//fin constructor vacio
 		
 		Log(int num_log, string user, string comd){
 			this->num_log=num_log;
 			setUser(user);
 			setComd(comd);
-		}
+		}//fin constructor sobrecargado
 		
 		int getNum_log()const{
 			return this->num_log;

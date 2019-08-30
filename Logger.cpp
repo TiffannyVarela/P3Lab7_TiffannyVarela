@@ -18,13 +18,13 @@ class Logger{
 		
 	public:
 		Logger(){
-		}
+		}//fin constructor vacio
 		
 		Logger(string user, string nom_archv, int num_log){
 			setUser(user);
 			setNom_archv(nom_archv);
 			this->num_log=num_log;
-		}
+		}//fin constructor sobrecargado
 		
 		string getUser()const{
 			return this->user;
@@ -74,17 +74,17 @@ class Logger{
 			this->vect_logs=vect_logs;
 		}
 		
-		void Escribir(){
+		void Escribir(){//inicio metodo escribir
 			fstream escribir(nom_archv, ios::out | ios::binary | ios::app);
-			if(!escribir){
+			if(!escribir){//inicio if problemas
 				cout<<"Problemas con apertura de archivo \n";
 				system("pause");
 				return ;
-			}
+			}//fin if problemas
 			string usuario;
 			string comando;
 			int num_log;
-			for(int i=0; i<getN(); i++){
+			for(int i=0; i<getN(); i++){//inicio for escribe
 				usuario = vect_logs.at(i)->getUser();
 				comando = vect_logs.at(i)->getComd();
 				num_log = i;
@@ -94,31 +94,31 @@ class Logger{
 				escribir.write(reinterpret_cast<char*>(&log), sizeof(log));
 				
 				escribir.close();
-			}
-		}
+			}//fin for escribe
+		}//fin metodo escribir
 		
-		void Listar(){
+		void Listar(){//inicio metodo listar
 			Log x;
 			ifstream leer(nom_archv, ios::in | ios::binary);
 			
-			if(!leer){
+			if(!leer){//inicio if problemas
 				cout<<"Problemas con la apertura del archivo\n";
 				system("pause");
 				return ;
-			}
+			}//fin if problemas
 			
 			leer.seekg(0, ios::beg);
 			leer.read(reinterpret_cast<char*>(&x), sizeof(x));
-			while(!leer.eof()){
+			while(!leer.eof()){//inicio while
 				leer.read(reinterpret_cast<char*>(&x), sizeof(x));
 				cout<<endl;
 				x.printLog();
 				cout<<endl;
 				leer.read(reinterpret_cast<char*>(&x), sizeof(x));
-			}
+			}//fin while
 			
 			leer.close();
-		}
+		}//fin metodo listar
 		
 		void clear(vector<Log*> x){
 			x.clear();

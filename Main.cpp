@@ -14,12 +14,12 @@ int main(){
 	try{
 		consola->cmd();
 		consola = NULL;
-		delete[] consola;
+		
 	}
 	catch(CmdError &e){
 		cout<<e.what();
 	}
-	
+	delete consola;
 	return 0;
 }
 
