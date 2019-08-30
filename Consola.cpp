@@ -9,8 +9,18 @@ using namespace std;
 
 class Consola{
 	protected:
+		string user;
 		
 	public:
+		Consola(){
+		}
+		
+		Consola(){
+			
+		}
+		
+		void cmd(){
+		}
 };
 
 #endif
